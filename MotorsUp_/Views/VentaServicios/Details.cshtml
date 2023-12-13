@@ -1,0 +1,41 @@
+﻿@model MotorsUp_.Models.VentaServicio
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<a asp-action="Index" style="text-decoration: none;"><i class="bi bi-arrow-left-square-fill"></i></a>
+
+<h1 class="row justify-content-center">Detalles de ventas por servicio</h1>
+
+<div class="row justify-content-center" style="padding:10px">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Metodo de pago</th>
+                <th scope="col">Valor mano de obra</th>
+                <th scope="col">Valor insumos</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.FechaHora)</td>
+                <td>@Html.DisplayFor(model => model.EstadoVenta)</td>
+                <td>@Html.DisplayFor(model => model.MetodoPago)</td>
+                <td>@Html.DisplayFor(model => model.ValorManoDeObra)</td>
+                <td>@Html.DisplayFor(model => model.ValorInsumos)</td>
+                <td>@Html.DisplayFor(model => model.Total)</td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model?.IdVentaServicio"><i class="bi bi-pencil-square"></i></a>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+

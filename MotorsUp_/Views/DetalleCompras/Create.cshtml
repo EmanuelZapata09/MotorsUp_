@@ -1,0 +1,83 @@
+﻿@model MotorsUp_.Models.DetalleCompra
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h4 class="row justify-content-center"> Añadir detalle compra</h4>
+<a asp-action="Index" style="text-decoration: none;"><i class="bi bi-arrow-left-square-fill"></i></a>
+
+<div class="row">
+    <div class="col-md-4" >
+        <form asp-action="Edit" id="form-detalle-compra">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" id="precio"/>
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"></label>
+                <input asp-for="Cantidad" class="form-control" id="cantidad"/>
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subtotal" class="control-label"></label>
+                <input asp-for="Subtotal" class="form-control" id="subtotal"/>
+                <span asp-validation-for="Subtotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCompra" class="control-label"></label>
+                <select asp-for="IdCompra" class="form-control" asp-items="ViewBag.IdCompra"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProducto" class="control-label"></label>
+                <select asp-for="IdProducto" class="form-control" asp-items="ViewBag.IdProducto"></select>
+            </div>
+            <div class="content-button">
+                <div class="form-group text-center" style="padding: 7px">
+                    <input type="submit" value="Crear" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        document.getElementById('form-detalle-compra').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Obtener los valores directamente y validar
+            if (
+                document.getElementById('precio').value.trim() !== '' &&
+                document.getElementById('cantidad').value.trim() !== '' &&
+                document.getElementById('subtotal').value.trim() !== '' &&
+                document.getElementById('IdCompra').value.trim() !== '' &&
+                document.getElementById('IdProducto').value.trim() !== ''
+            ) {
+                swal.fire({
+                    title: 'Detalle de compra registrado con éxito',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    timer: 1800
+                }).then(() => {
+                    document.getElementById('form-detalle-compra').submit();
+                });
+            } else {
+                swal.fire({
+                    title: 'Complete todos los campos',
+                    icon: 'warning',
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    timer: 1800
+                });
+            }
+        });
+
+    </script>
+}

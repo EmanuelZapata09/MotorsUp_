@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MotorsUp_.Models.Proveedore>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="row justify-content-center">Gestion proveedores</h1>
+
+<p class="btn btn-primary">
+    <a asp-action="Create" style="color:white; text-decoration: none;"><i class="bi bi-plus"></i> Añadir</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id proveedor
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Correo
+            </th>
+            <th>
+                Direccion
+            </th>
+            <th>
+                Telefono
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorreoProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DireccionProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelefonoProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.IdProveedor"><i class="bi bi-pencil-square"></i></a> |
+                <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.IdProveedor"><i class="bi bi-sliders"></i></a> |
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+﻿@model MotorsUp_.Models.Proveedore
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="row justify-content-center">Detalles de proveedores</h1>
+<a asp-action="Index" style="text-decoration: none;"><i class="bi bi-arrow-left-square-fill"></i></a>
+
+<hr />
+
+<div class="row justify-content-center" style="padding:10px">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Id proveedor</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo </th>
+                <th scope="col">Direccion </th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.IdProveedor)</td>
+                <td>@Html.DisplayFor(model => model.NombreProveedor)</td>
+                <td>@Html.DisplayFor(model => model.CorreoProveedor)</td>
+                <td>@Html.DisplayFor(model => model.DireccionProveedor)</td>
+                <td>@Html.DisplayFor(model => model.TelefonoProveedor)</td>
+                <td>@Html.DisplayFor(model => model.Estado)</td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model?.IdProveedor"><i class="bi bi-pencil-square"></i></a>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

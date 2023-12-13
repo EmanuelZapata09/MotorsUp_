@@ -1,0 +1,97 @@
+﻿@model MotorsUp_.Models.Persona
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4 class="row justify-content-center"> Añadir persona</h4>
+<a asp-action="Index" style="text-decoration: none;"><i class="bi bi-arrow-left-square-fill"></i></a>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="form-persona">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdPersona" class="control-label"></label>
+                <input asp-for="IdPersona" class="form-control" />
+                <span asp-validation-for="IdPersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoPersona" class="control-label"></label>
+                <input asp-for="TipoPersona" class="form-control" id="tipoPersona"/>
+                <span asp-validation-for="TipoPersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombrePersona" class="control-label"></label>
+                <input asp-for="NombrePersona" class="form-control" id="nombre"/>
+                <span asp-validation-for="NombrePersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DireccionPersona" class="control-label"></label>
+                <input asp-for="DireccionPersona" class="form-control" id="direccion" />
+                <span asp-validation-for="DireccionPersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CorreoPersona" class="control-label"></label>
+                <input asp-for="CorreoPersona" class="form-control" id="correo"/>
+                <span asp-validation-for="CorreoPersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TelefonoPersona" class="control-label"></label>
+                <input asp-for="TelefonoPersona" class="form-control" maxlength="15" id="telefono"/>
+                <span asp-validation-for="TelefonoPersona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.EstadoPersona)
+                </label>
+                <input class="form-check-input" asp-for="EstadoPersona" id="creatChekEmpleado" />
+                <label for="creatChekEmpleado" class="lbl"></label>
+            </div>
+            <div class="content-button">
+                <div class="form-group text-center" style="padding: 7px">
+                    <input type="submit" value="Crear" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.getElementById('form-persona').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (document.getElementById('tipoPersona').value.trim() !== '' &&
+                document.getElementById('nombre').value.trim() !== '' &&
+                document.getElementById('direccion').value.trim() !== '' &&
+                document.getElementById('correo').value.trim() !== '' &&
+                document.getElementById('telefono').value.trim() !== '' &&
+                document.getElementById('tipoPersona').value.trim() !== '') {
+                swal.fire({
+                    title: 'Persona registrada con éxito',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    timer: 1800
+                }).then(() => {
+                    document.getElementById('form-persona').submit();
+                    setTimeout(() => {
+                        window.location.replace("Personas/"); 
+                    }, 2000);
+                });
+            } else {
+                swal.fire({
+                    title: 'Complete todos los campos',
+                    icon: 'warning',
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    timer: 1800
+                });
+            }
+        });
+    </script>
+}

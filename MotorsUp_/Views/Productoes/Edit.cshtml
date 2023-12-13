@@ -1,0 +1,107 @@
+﻿@model MotorsUp_.Models.Producto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4 class="row justify-content-center">Editar producto</h4>
+<a asp-action="Index" style="text-decoration: none;"><i class="bi bi-arrow-left-square-fill"></i></a>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" id="form-producto">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdProducto" />
+            <div class="form-group">
+                <label asp-for="NombreProducto" class="control-label"></label>
+                <input asp-for="NombreProducto" class="form-control" id="nombre" />
+                <span asp-validation-for="NombreProducto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrecioCompra" class="control-label"></label>
+                <input asp-for="PrecioCompra" class="form-control" id="precioV" />
+                <span asp-validation-for="PrecioCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrecioVenta" class="control-label"></label>
+                <input asp-for="PrecioVenta" class="form-control" id="precioC" />
+                <span asp-validation-for="PrecioVenta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstadoProducto" class="control-label"></label>
+                <input asp-for="EstadoProducto" class="form-control" id="estado" />
+                <span asp-validation-for="EstadoProducto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SaldoExistencias" class="control-label"></label>
+                <input asp-for="SaldoExistencias" class="form-control" id="saldoE" />
+                <span asp-validation-for="SaldoExistencias" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockMinimo" class="control-label"></label>
+                <input asp-for="StockMinimo" class="form-control" id="stockMi" />
+                <span asp-validation-for="StockMinimo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockMaximo" class="control-label"></label>
+                <input asp-for="StockMaximo" class="form-control" id="stockMa" />
+                <span asp-validation-for="StockMaximo" class="text-danger"></span>
+            </div>
+            <div class="content-button">
+                <div class="form-group text-center" style="padding: 7px">
+                    <input type="submit" value="Crear" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+    <script>
+        document.getElementById('form-producto').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Obtener los valores directamente y validar
+            if (
+               document.getElementById('nombre').value.trim() !== '' &&
+                document.getElementById('precioV').value.trim() !== '' &&
+                document.getElementById('precioC').value.trim() !== '' &&
+                document.getElementById('estado').value.trim() !== '' &&
+                document.getElementById('saldoE').value.trim() !== '' &&
+                document.getElementById('stockMi').value.trim() !== '' &&
+                document.getElementById('stockMa').value.trim() !== '' 
+            ) {
+                swal.fire({
+                    title: '¿Está seguro?',
+                    text: '¿Está seguro que quiere editar este producto?',
+                    icon: 'info',
+                    buttons: true,
+                    dangerMode: false,
+                    showCancelButton: true,
+                }).then((confirmed) => {
+                    if (confirmed.value) {
+                        document.getElementById('form-producto').submit();
+                    } else {
+                        swal.fire('Cancelado', 'El producto no fue modificado', 'info');
+                    }
+                });
+            } else {
+                swal.fire({
+                    title: 'Complete todos los campos',
+                    icon: 'warning',
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    timer: 1800
+                });
+            }
+
+        });
+
+    </script>
+}

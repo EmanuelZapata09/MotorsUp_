@@ -1,0 +1,79 @@
+﻿@model IEnumerable<MotorsUp_.Models.Producto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="row justify-content-center">Gestion productos</h1>
+
+<p class="btn btn-primary">
+    <a asp-action="Create" style="color:white; text-decoration: none;"><i class="bi bi-plus"></i> Añadir</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id producto
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Precio compra
+            </th>
+            <th>
+                Precio venta
+            </th>
+            <th>
+                Estado producto
+            </th>
+            <th>
+                Saldo existencias
+            </th>
+            <th>
+                Stock minimo
+            </th>
+            <th>
+                Stock maximo
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr >
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaldoExistencias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockMinimo)
+            </td>oy 
+            <td>
+                @Html.DisplayFor(modelItem => item.StockMaximo)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.IdProducto"><i class="bi bi-pencil-square"></i></a> 
+                <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.IdProducto"><i class="bi bi-sliders"></i></a> 
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

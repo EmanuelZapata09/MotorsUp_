@@ -1,0 +1,73 @@
+﻿@model MotorsUp_.Models.Usuario
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4 class="row justify-content-center"> Añadir Usuario</h4>
+<a asp-action="Index" style="text-decoration: none;"><i class="bi bi-arrow-left-square-fill"></i></a>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="form-usuario"> 
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CorreoUsuario" class="control-label"></label>
+                <input asp-for="CorreoUsuario" class="form-control" id="correo" />
+                <span asp-validation-for="CorreoUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContrasenaUsuario" class="control-label"></label>
+                <input asp-for="ContrasenaUsuario" class="form-control" id="contrasena" />
+                <span asp-validation-for="ContrasenaUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdRol" class="control-label"></label>
+                <select asp-for="IdRol" class="form-control" asp-items="ViewBag.IdRol"></select>
+            </div>
+            
+            <div class="content-button">
+                <div class="form-group text-center" style="padding: 7px">
+                    <input type="submit" value="Crear" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.getElementById('form-usuario').addEventListener('submit', function (e) { 
+            e.preventDefault();
+            
+       
+            if (
+                document.getElementById('correo').value.trim() !== '' &&
+                document.getElementById('contrasena').value.trim() !== '' &&
+                document.getElementById('IdRol').value.trim() !== ''
+            ) {
+                swal.fire({
+                    title: 'Usuario registrado con éxito',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    timer: 1800
+                }).then(() => {
+                    document.getElementById('form-usuario').submit(); 
+                    setTimeout(() => {
+                        window.location.replace("Usuarios/"); 
+                    }, 2000);
+                });
+            } else {
+                swal.fire({
+                    title: 'Complete todos los campos',
+                    icon: 'warning',
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    timer: 1800
+                });
+            }
+        });
+    </script>
+}

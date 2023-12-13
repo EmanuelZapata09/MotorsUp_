@@ -1,0 +1,41 @@
+﻿@model MotorsUp_.Models.Persona
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<a asp-action="Index" style="text-decoration: none;"><i class="bi bi-arrow-left-square-fill"></i></a>
+
+<h1 class="row justify-content-center">Detalles de Personas</h1>
+
+<div class="row justify-content-center" style="padding:10px">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Tipo Persona</th>
+                <th scope="col">Nombre Persona</th>
+                <th scope="col">Direccion Persona</th>
+                <th scope="col">Correo Persona</th>
+                <th scope="col">Telefono Persona</th>
+                <th scope="col">Estado Persona</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.TipoPersona)</td>
+                <td>@Html.DisplayFor(model => model.NombrePersona)</td>
+                <td>@Html.DisplayFor(model => model.DireccionPersona)</td>
+                <td>@Html.DisplayFor(model => model.CorreoPersona)</td>
+                <td>@Html.DisplayFor(model => model.TelefonoPersona)</td>
+                <td>@Html.DisplayFor(model => model.EstadoPersona)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@Model?.IdPersona"><i class="bi bi-pencil-square"></i></a>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

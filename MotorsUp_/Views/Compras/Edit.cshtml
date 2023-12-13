@@ -1,0 +1,89 @@
+﻿@model MotorsUp_.Models.Compra
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h4 class="row justify-content-center">Editar compra</h4>
+<a asp-action="Index" style="text-decoration: none;"><i class="bi bi-arrow-left-square-fill"></i></a>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" id="form-compra">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdCompra" />
+            <div class="form-group">
+                <label asp-for="EstadoCompra" class="control-label"></label>
+                <select asp-for="EstadoCompra" class="form-control">
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+                <span asp-validation-for="EstadoCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescripcionCompra" class="control-label"></label>
+                <input asp-for="DescripcionCompra" class="form-control" id="descripcion"/>
+                <span asp-validation-for="DescripcionCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaCompra" class="control-label"></label>
+                <input asp-for="FechaCompra" class="form-control" id="FechaCompraInput" />
+                <span asp-validation-for="FechaCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProveedor" class="control-label"></label>
+                <select asp-for="IdProveedor" class="form-control" asp-items="ViewBag.IdProveedor"></select>
+                <span asp-validation-for="IdProveedor" class="text-danger"></span>
+            </div>
+            <div class="content-button">
+                <div class="form-group text-center" style="padding: 7px">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.getElementById('form-compra').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Obtener los valores directamente y validar
+            if (
+                document.getElementById('EstadoCompra').value.trim() !== '' &&
+                document.getElementById('descripcion').value.trim() !== '' &&
+                document.getElementById('FechaCompraInput').value.trim() !== '' &&
+                document.getElementById('IdProveedor').value.trim() !== ''
+            ) {
+                swal.fire({
+                    title: '¿Está seguro?',
+                    text: '¿Está seguro que quiere editar esta compra?',
+                    icon: 'info',
+                    buttons: true,
+                    dangerMode: false,
+                    showCancelButton: true,
+                }).then((confirmed) => {
+                    if (confirmed.value) {
+                        document.getElementById('form-compra').submit();
+                    } else {
+                        swal.fire('Cancelado', 'La compra no fue modificada', 'info');
+                    }
+                });
+            } else {
+                swal.fire({
+                    title: 'Complete todos los campos',
+                    icon: 'warning',
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    timer: 1800
+                });
+            }
+            
+        });
+
+    </script>
+
+}

@@ -1,0 +1,39 @@
+﻿@model MotorsUp_.Models.DetalleCompra
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="row justify-content-center">Detalles de compras</h1>
+<a asp-action="Index" style="text-decoration: none;"><i class="bi bi-arrow-left-square-fill"></i></a>
+
+<div class="row justify-content-center" style="padding:10px">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Id detalle compra</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad </th>
+                <th scope="col">Subtotal </th>
+                <th scope="col">Id compra</th>
+                <th scope="col">Id producto</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.IdDetalleCompra)</td>
+                <td>@Html.DisplayFor(model => model.Precio)</td>
+                <td>@Html.DisplayFor(model => model.Cantidad)</td>
+                <td>@Html.DisplayFor(model => model.Subtotal)</td>
+                <td>@Html.DisplayFor(model => model.IdCompraNavigation.DescripcionCompra)</td>
+                <td>@Html.DisplayFor(model => model.IdProductoNavigation.IdProducto)</td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model?.IdDetalleCompra"><i class="bi bi-pencil-square"></i></a>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

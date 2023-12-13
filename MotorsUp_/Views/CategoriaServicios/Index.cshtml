@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MotorsUp_.Models.CategoriaServicio>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1 class="row justify-content-center">Categorias de servicios</h1>
+    <p class="btn btn-primary">
+        <a asp-action="Create" style="color:white; text-decoration: none;"><i class="bi bi-plus"></i> Añadir</a>
+    </p>
+<table class="table" id="tableCatServices">
+    <thead>
+        <tr>
+            <th>
+                Nombre Categoría
+            </th>
+            <th>
+                Estado Categoría
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCategoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstadoCategoria)
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.IdCategoria"><i class="bi bi-pencil-square"></i></a> |
+                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.IdCategoria"><i class="bi bi-sliders"></i></a> |
+                   
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

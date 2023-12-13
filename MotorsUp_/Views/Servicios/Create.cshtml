@@ -1,0 +1,67 @@
+﻿@model MotorsUp_.Models.Servicio
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear</h1>
+<a asp-action="Index" style="text-decoration: none;"><i class="bi bi-arrow-left-square-fill"></i></a>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="form-servicio">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NombreServicio" class="control-label"></label>
+                <input asp-for="NombreServicio" class="form-control" id="nombre"/>
+                <span asp-validation-for="NombreServicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCategoria" class="control-label"></label>
+                <select asp-for="IdCategoria" class="form-control" id="categoria" asp-items="ViewBag.IdCategoria"></select>
+            </div>
+            <div class="content-button">
+                <div class="form-group text-center" style="padding: 7px">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        document.getElementById('form-servicio').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Obtener los valores directamente y validar
+            if (
+                document.getElementById('nombre').value.trim() !== '' &&
+                document.getElementById('categoria').value.trim() !== ''
+            ) {
+                swal.fire({
+                    title: 'Servicio registrado con éxito',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    timer: 1800
+                }).then(() => {
+                    document.getElementById('form-servicio').submit();
+                });
+            } else {
+                swal.fire({
+                    title: 'Complete todos los campos',
+                    icon: 'warning',
+                    showConfirmButton: false,
+                    showCancelButton: false,
+                    timer: 1800
+                });
+            }
+        });
+
+    </script>
+}

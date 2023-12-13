@@ -1,0 +1,83 @@
+﻿@model MotorsUp_.Models.CategoriaServicio
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear</h1>
+<a asp-action="Index" style="text-decoration: none;"><i class="bi bi-arrow-left-square-fill"></i></a>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="formCatService">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NombreCategoria" class="control-label"></label>
+                <input asp-for="NombreCategoria" class="form-control" />
+                <span asp-validation-for="NombreCategoria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">
+                    @Html.DisplayNameFor(model => model.EstadoCategoria)
+                </label>
+                <input class="form-check-input" asp-for="EstadoCategoria" id="createChekCatService" />
+                <label for="createChekCatService" class="lbl"></label>
+            </div>
+
+            <div class="content-button">
+                <div class="form-group text-center" style="padding: 7px">
+                    <input type="submit" value="Crear" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+        <script>
+            document.getElementById('formCatService').addEventListener('submit', function () {
+                var control = true;
+                var myForm = document.getElementById('myForm');
+
+                var inputs = myForm.querySelectorAll('input');
+
+                inputs.forEach(function (input) {
+                    if(input.value.trim() == ''){
+                        control = false;
+                    }
+                });
+                if(control){
+                    swal.fire({
+                        title: 'Operacion ejecutada con exito',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        showCancelButton: false,
+                        timer: 1800
+                    }).then(() => {
+                        document.getElementById('formCatService').submit();
+                        setTimeout(() => {
+                            window.location.replace("CategoriaServicios/");
+                        }, 2000);
+                    });
+                } else{
+                    swal.fire({
+                        title: 'No puedes enviar campos vacios',
+                        icon: 'error',
+                        showConfirmButton: false,
+                        showCancelButton: false,
+                        timer: 1800
+                    }).then(() => {
+                        document.getElementById('form-compra').submit();
+                        setTimeout(() => {
+                            window.location.replace("CategoriaServicios/");
+                        }, 2000);
+                    });
+                }
+            });
+        </script>
+    }
+}

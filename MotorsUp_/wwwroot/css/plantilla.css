@@ -1,0 +1,161 @@
+﻿.titulos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+    .titulos h1 {
+        margin-right: auto;
+    }
+
+    .titulos p {
+        border-radius: 20px;
+        padding: 5px 10px 5px 10px;
+        margin-left: auto;
+        border: 1px solid gray;
+        box-shadow: 0 5px 0 gray;
+    }
+
+    .titulos a {
+        text-decoration: none;
+        font-size: 20px;
+        color: black;
+    }
+
+form a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+td a {
+    text-decoration: none;
+    font-size: 18;
+    color: black;
+}
+
+.col-md-4 {
+    width: 95%;
+    margin: 0 auto;
+}
+
+form{
+    display: flex;
+    flex-wrap: wrap;
+    column-count: 2;
+    column-gap: 40px;
+    justify-content: space-between;
+    width: 75%;
+    margin: 0 auto;
+}
+
+dl{
+    display: flex;
+    flex-wrap: wrap;
+    column-count: 4;
+    column-gap: 5px;
+    justify-content: space-between;
+    width: 85% !important;
+    margin: 0 auto;
+}
+
+dt{
+    width: 20% !important;
+}
+
+dd{
+    width: 25% !important;
+}
+
+    form div{
+        width: 30%;
+        margin: 5px 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+.lbl {
+    display: inline-block;
+    width: 45px;
+    height: 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    background-color: gray;
+    position: relative;
+}
+
+    .lbl::after {
+        content: '';
+        display: block;
+        width: 15px;
+        height: 15px;
+        border-radius: 100px;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        background-color: white;
+        transition: .5s;
+    }
+
+.form-check-input:checked + .lbl::after {
+    left: 26px;
+}
+
+.form-check-input:checked + .lbl {
+    background-color: blue;
+}
+
+.form-check-input {
+    display: none;
+}
+
+/*
+    DataTable
+*/
+
+.dataTables_filter input {
+    width: 180px;
+    border-radius: 20px !important;
+    padding: 5px 10px !important;
+    font-size: 18px;
+    box-shadow: 1px 2px 5px #ddd;
+    outline: none;
+}
+
+.dataTables_length select{
+    font-size: 16px;
+    border-radius: 10px !important;
+    outline: none;
+    cursor: pointer;
+}
+
+.dataTables_length{
+    display: none !important;
+}
+
+.dataTables_wrapper{
+    margin: -10px 0;
+}
+/*
+    buttons
+*/
+.content-button {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn {
+    border-radius: 20px;
+}
+
+
+/*table*/
+td:last-child{
+    min-width:100px;
+}

@@ -1,0 +1,57 @@
+﻿@{
+	ViewData["Title"] = "Index";
+	ViewData["login"] = true;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+	<!---MATERIALIZE-->
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	<link rel="stylesheet" href="~/css/login.css">
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="center-align">
+			<img id="logo"
+				src="https://img.freepik.com/vector-premium/logotipos-motos-talleres-custom_116238-1.jpg?w=2000">
+			<form asp-action="validar">
+				<div class="row" >
+					<div class="input-field col s12">
+						<input id="usuario" name="usuario" type="text" class="validate">
+						<label for="text" class="white-text">Usuario</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="contraseña" name="contrasenha" type="password" class="validate" autocomplete="current-password">
+						<label for="password" class="white-text">Contraseña</label>
+					</div>
+
+				</div>
+				<p>
+					<label>
+						<input type="checkbox" class="filled-in" checked="checked" id="check" />
+						<span class="white-text">Recuerdame</span>
+					</label>
+				</p>
+				
+					<button style="margin: 0 auto;" class="btn white black-text" type="submit" name="action" id="btnIngresar">
+						Ingresar
+					</button>
+			</form>
+		</div>
+</body>
+</html>
+

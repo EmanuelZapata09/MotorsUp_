@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MotorsUp_.Models.Role>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="row justify-content-center">Roles</h1>
+    <p class="btn btn-primary">
+        <a asp-action="Create" style="color:white; text-decoration: none;"><i class="bi bi-plus"></i> Añadir</a>
+    </p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit"  class="btn btn-warning" asp-route-id="@item.IdRol"><i class="bi bi-pencil-square"></i></a> 
+                <a asp-action="Details"  class="btn btn-primary"asp-route-id="@item.IdRol"><i class="bi bi-sliders"></i></a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

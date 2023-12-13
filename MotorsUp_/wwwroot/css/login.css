@@ -1,0 +1,27 @@
+﻿#logo {
+    background: lightblue;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: #015c95;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+body {
+    background-color: #5D82A8;
+}
+
+.validate {
+    color: white;
+}

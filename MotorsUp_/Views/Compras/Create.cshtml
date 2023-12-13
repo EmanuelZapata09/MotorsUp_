@@ -1,0 +1,109 @@
+﻿@model MotorsUp_.Models.Compra
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<h1 class="row justify-content-center">Crear compra</h1>
+
+<a asp-action="Index" style="text-decoration: none;"><i class="bi bi-arrow-left-square-fill"></i></a>
+    <div class="col-md-4">
+        <form asp-action="Create" id="form-compra">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EstadoCompra" class="control-label"></label>
+                <select asp-for="EstadoCompra" class="form-control">
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                <span asp-validation-for="EstadoCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescripcionCompra" class="control-label"></label>
+                <input asp-for="DescripcionCompra" class="form-control" id="des"/>
+                <span asp-validation-for="DescripcionCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaCompra" class="control-label"></label>
+                <input asp-for="FechaCompra" class="form-control" required id="FechaCompraInput"/>
+                <span asp-validation-for="FechaCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProveedor" class="control-label"></label>
+                <select asp-for="IdProveedor" class ="form-control" asp-items="ViewBag.IdProveedor"></select>
+                <span asp-validation-for="IdProveedor" class="text-danger"></span>
+            </div>
+            <div class="content-button">
+                <div class="form-group text-center" style="padding: 7px">
+                    <input type="submit" value="Crear" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Obtiene el elemento de entrada de fecha
+            var fechaCompraInput = document.getElementById("FechaCompraInput");
+
+            // Obtiene la fecha y hora actuales
+            var fechaActual = new Date();
+
+
+            // Formatea la fecha en el formato "yyyy-MM-dd"
+            var formattedFechaActual = fechaActual.toISOString().split('T')[0];
+
+            // Establece el valor del campo FechaCompra con la fecha y hora actuales
+            fechaCompraInput.value = formattedFechaActual;
+        });
+
+        document.getElementById("form-compra").addEventListener("submit", function (event) {
+            if (!this.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+                alert("Por favor, corrige los errores en el formulario antes de enviarlo.");
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('form-compra').addEventListener('submit', function (e) {
+    e.preventDefault();
+    // Obtener los valores directamente y validar
+    if (
+        document.getElementById('EstadoCompra').value.trim() !== '' &&
+        document.getElementById('des').value.trim() !== '' &&
+        document.getElementById('FechaCompraInput').value.trim() !== '' &&
+        document.getElementById('IdProveedor').value.trim() !== ''
+    ) {
+        swal.fire({
+            title: 'Compra registrada con éxito',
+            icon: 'success',
+            showConfirmButton: false,
+            showCancelButton: false,
+            timer: 1800
+        }).then(() => {
+            document.getElementById('form-compra').submit();
+            setTimeout(() => {
+                window.location.replace("Compras/");
+            }, 2000);
+        });
+    } else {
+        swal.fire({
+            title: 'Complete todos los campos',
+            icon: 'warning',
+            showConfirmButton: false,
+            showCancelButton: false,
+            timer: 1800
+        });
+    }
+});
+
+    </script>
+}

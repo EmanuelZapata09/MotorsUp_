@@ -1,0 +1,32 @@
+﻿@model MotorsUp_.Models.Permiso
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<a asp-action="Index" style="text-decoration: none;"><i class="bi bi-arrow-left-square-fill"></i></a>
+
+<h1 class="row justify-content-center">Detalles del Permiso</h1>
+
+<div class="row justify-content-center" style="padding:10px">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Id Permiso</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Enlace </th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.IdPermiso)</td>
+                <td>@Html.DisplayFor(model => model.Nombre)</td>
+                <td>@Html.DisplayFor(model => model.Enlace)</td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model?.IdPermiso"><i class="bi bi-pencil-square"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

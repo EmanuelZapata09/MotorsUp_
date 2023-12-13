@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MotorsUp_.Models.VentaServicio>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="row justify-content-center">Ventas por servicios</h1>
+
+<p class="btn btn-primary">
+    <a asp-action="Create" style="color:white; text-decoration: none;"><i class="bi bi-plus"></i> Añadir</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaHora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetodoPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorManoDeObra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorInsumos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCotizacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdClienteNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaHora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetodoPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorManoDeObra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorInsumos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCotizacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClienteNavigation.IdCliente)
+            </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.IdVentaServicio"><i class="bi bi-pencil-square"></i></a>
+                    <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.IdVentaServicio"><i class="bi bi-sliders"></i></a>
+             
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

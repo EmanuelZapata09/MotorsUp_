@@ -1,0 +1,158 @@
+﻿.menu_lateral_comprimido a {
+    color: white !important;
+}
+.menu_lateral_expander a{
+    color: white !important;
+}
+.menu_lateral_comprimido {
+    background: linear-gradient(#0073B9,#015c95,#001725);
+    width: 70px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    margin-left: 1px;
+    font-size: 5px;
+    margin-top: 65px;
+    border-radius: 0 5px 0 0;
+    box-shadow: 0px 0 5px gray;
+}
+
+    .menu_lateral_comprimido .nav-item > a:first-child {
+        margin-left: 10px;
+        width: 25px;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .menu_lateral_comprimido #titulo{
+        display: none;
+    }
+
+    .menu_lateral_comprimido .flex-grow-1 {
+        padding-top: 20px;
+    }
+
+.menu_lateral_expander {
+    background: linear-gradient(#0073B9, #015c95, #001725);
+    width: 250px;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    position: fixed;
+    height: 100%; 
+    left: 0;
+    top: 0;
+    margin-left: 1px;
+    box-shadow: 0px 0 5px gray;
+    font-size: 18px;
+    margin-top: 65px;
+    border-radius: 0 5px 0 0;
+    z-index: 5;
+}
+
+.nav-item {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.itemMenu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.flex-grow-1 {
+    overflow-y: auto;
+}
+
+.itemMenu:hover {
+    background-color: azure;
+}
+
+.container {
+    margin-left: 100px;
+}
+
+
+/**
+    Estilo button
+*/
+.btn_menu {
+    display: flex;
+    flex-direction: column;
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    background: transparent;
+    gap: .65rem;
+}
+
+    .btn_menu > div {
+        background: black;
+        height: 2px;
+        width: 100%;
+        border-radius: 5px;
+        transition: all .5s;
+        transform-origin: left;
+    }
+
+.close div:first-child {
+    transform: rotate(45deg);
+}
+
+.close div:nth-child(2) {
+    opacity: 0;
+}
+
+.close div:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+/*
+    subMenu
+*/
+
+.nav-item > a:first-child {
+    font-size: 25px;
+    text-decoration: none;
+    color: white !important;
+}
+
+i{
+    margin-right:4px;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    font-weight: 400;
+    font-family: 'Montserrat';
+}
+
+.menuViewNo .submenu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    z-index: 1;
+    animation: .5s;
+}
+
+.menuView .submenu a {
+    text-decoration: none;
+    display: block;
+    animation: .2s;
+}
+
+#titulo {
+    font-size: 30px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: white;
+}
